@@ -115,15 +115,15 @@ assert css_fn.exists() and css_fn.is_file(), f"CSS file not found: {css_fn}"
 with gr.Blocks(css=str(css_fn), theme=gr.themes.Soft()) as demo:
     chat_id = gr.State(value=get_chat_id)
     history_en = gr.State(value=[])
-    history_bo = gr.Chatbot(label="Tibetan Chatbot", elem_id="maiChatHistory").style(
+    history_bo = gr.Chatbot(label="བོད་ཡིག་རིག་ནུས་ཁ་བརྡ།", elem_id="maiChatHistory").style(
         height=650
     )
     input_bo = gr.Textbox(
         show_label=False,
-        placeholder="Type here...",
+        placeholder="དྲི་བ་འདི་ལ་སྐོང་རོགས།",
         elem_id="maiChatInput",
     )
-    input_submit_btn = gr.Button("Submit")
+    input_submit_btn = gr.Button("འཇུག")
     input_bo.submit(
         fn=user,
         inputs=[input_bo, history_bo],
@@ -145,7 +145,7 @@ with gr.Blocks(css=str(css_fn), theme=gr.themes.Soft()) as demo:
         outputs=[history_bo],
     )
 
-    clear = gr.Button("Clear")
+    clear = gr.Button("བཅོས།")
     clear.click(lambda: [], None, history_bo, queue=False)
 
 demo.launch()
